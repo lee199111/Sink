@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Vibemuse Short Link"
+  short_description: "Create Sink short links with Vibemuse UTM rules"
+  default_prompt: "Use $create-vibemuse-short-link to create a Vibemuse short link in Sink with the correct UTM fields."

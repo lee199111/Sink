@@ -16,6 +16,7 @@
     "build:sphere": "node scripts/build-sphere.js",
     "build:colo": "node scripts/build-colo.js",
     "build:testimonials": "node scripts/build-testimonials.js",
+    "utm:vibemuse:normalize": "node --experimental-strip-types scripts/normalize-vibemuse-utm.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint-staged": "lint-staged",

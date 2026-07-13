@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LinkSchema } from '#shared/schemas/link'
+import { VIBEMUSE_UTM_CAMPAIGNS, VIBEMUSE_UTM_TERMS } from '#shared/utils/vibemuse-utm'
 import { parseQuery, parseURL, withQuery } from 'ufo'
 import { toast } from 'vue-sonner'
 
@@ -120,6 +121,14 @@ function applyBuilder() {
   emit('apply', validatedPreviewUrl.value)
   closeBuilder()
 }
+
+function onCampaignChange(value: string | number | bigint | Record<string, unknown> | null) {
+  utmValues.campaign = typeof value === 'string' ? value : ''
+}
+
+function onTermChange(value: string | number | bigint | Record<string, unknown> | null) {
+  utmValues.term = typeof value === 'string' ? value : ''
+}
 </script>
 
 <template>
@@ -167,12 +176,16 @@ function applyBuilder() {
           <FieldLabel for="utm-campaign">
             {{ $t('links.form.utm_campaign') }}
           </FieldLabel>
-          <Input
-            id="utm-campaign"
-            v-model="utmValues.campaign"
-            placeholder="spring_sale"
-            autocomplete="off"
-          />
+          <Select :model-value="utmValues.campaign" @update:model-value="onCampaignChange">
+            <SelectTrigger id="utm-campaign">
+              <SelectValue placeholder="Select a campaign" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem v-for="campaign in VIBEMUSE_UTM_CAMPAIGNS" :key="campaign" :value="campaign">
+                {{ campaign }}
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </Field>
 
         <div
@@ -185,12 +198,16 @@ function applyBuilder() {
             <FieldLabel for="utm-term">
               {{ $t('links.form.utm_term') }}
             </FieldLabel>
-            <Input
-              id="utm-term"
-              v-model="utmValues.term"
-              placeholder="running-shoes"
-              autocomplete="off"
-            />
+            <Select :model-value="utmValues.term" @update:model-value="onTermChange">
+              <SelectTrigger id="utm-term">
+                <SelectValue placeholder="Select a term" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem v-for="term in VIBEMUSE_UTM_TERMS" :key="term" :value="term">
+                  {{ term }}
+                </SelectItem>
+              </SelectContent>
+            </Select>
           </Field>
 
           <Field>

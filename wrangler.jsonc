@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "sink",
+  "name": "sink-url",
   "main": ".output/server/index.mjs",
   "assets": {
     "binding": "ASSETS",
@@ -11,6 +11,7 @@
   "compatibility_flags": [
     "nodejs_compat"
   ],
+  "workers_dev": true,
   "keep_vars": true,
   "upload_source_maps": true,
   "observability": {
@@ -25,6 +26,16 @@
     "binding": "AI",
     "remote": true
   },
+  "vars": {
+    "NUXT_CF_ACCOUNT_ID": "b2bb8400f92d658fb63a5702bd9c3c60",
+    "NUXT_DATASET": "sink"
+  },
+  "routes": [
+    {
+      "pattern": "dots2.click",
+      "custom_domain": true
+    }
+  ],
   "analytics_engine_datasets": [
     {
       "binding": "ANALYTICS",
@@ -34,15 +45,15 @@
   "kv_namespaces": [
     {
       "binding": "KV",
-      "preview_id": "ef93d42dc4b34969bab404d2e80f8dd3",
-      "id": "ef93d42dc4b34969bab404d2e80f8dd3" // IMPORTANT: Change this to your KV namespace ID
+      "preview_id": "5f73d7d7b8c04b2a9993b13991d75047",
+      "id": "5f73d7d7b8c04b2a9993b13991d75047"
     }
   ],
   "r2_buckets": [
     {
       "binding": "R2",
       "preview_bucket_name": "sink",
-      "bucket_name": "sink" // IMPORTANT: Change this to your R2 bucket name, or create one with `wrangler r2 bucket create sink`
+      "bucket_name": "sink"
     }
   ],
   "triggers": {

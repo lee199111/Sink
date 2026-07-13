@@ -8,10 +8,15 @@ dist
 
 # Node dependencies
 node_modules
+.pnpm-store
 
 # Logs
 ./logs
 *.log
+
+# Local operational artifacts
+backups/
+outputs/
 
 # Misc
 .DS_Store
