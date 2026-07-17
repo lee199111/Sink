@@ -1,0 +1,45 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sink-url-opsdata-staging-20260717",
+  "main": ".output/server/index.mjs",
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".output/public",
+    "html_handling": "drop-trailing-slash"
+  },
+  "compatibility_date": "2026-07-17",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "keep_vars": false,
+  "upload_source_maps": true,
+  "observability": {
+    "logs": {
+      "enabled": true
+    }
+  },
+  "vars": {
+    "NUXT_CF_ACCOUNT_ID": "b2bb8400f92d658fb63a5702bd9c3c60",
+    "NUXT_DATASET": "sink_opsdata_staging_20260717",
+    "NUXT_DISABLE_AUTO_BACKUP": "true",
+    "NUXT_REDIRECT_STATUS_CODE": "302"
+  },
+  "analytics_engine_datasets": [
+    {
+      "binding": "ANALYTICS",
+      "dataset": "sink_opsdata_staging_20260717"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "b49e92226fb94868aa2d6f60846a3c47"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "sink-opsdata-staging-20260717"
+    }
+  ]
+}
